@@ -1,7 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import useAppContext from './components/app';
 
 function App() {
+  const { xTurn, setXTurn } = useAppContext();
+  console.log('xTurn: ', xTurn);
+
   return (
     <div className="App">
       <header className="App-header">
