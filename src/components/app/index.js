@@ -1,9 +1,9 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState, useContext } from 'react';
 
-const AppContext = createContext()
+const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [xTurn, setXTurn] = useState(true)
+	const [xTurn, setXTurn] = useState(true);
 
 	return (
 		<AppContext.Provider
@@ -14,11 +14,11 @@ export const AppProvider = ({ children }) => {
 		>
 			{children}
 		</AppContext.Provider>
-	)
-}
+	);
+};
 
 const useAppContext = () => {
-	return useContext(AppContext)
-}
+	return useContext(AppContext);
+};
 
 export default useAppContext;
