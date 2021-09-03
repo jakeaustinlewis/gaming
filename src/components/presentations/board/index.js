@@ -1,10 +1,23 @@
 import React from 'react';
+import Square from '../../square';
 
 const board = () => {
+	const renderRow = () => {
+		return (
+			<div>
+				<Square />
+				<Square />
+				<Square />
+			</div>
+		);
+	};
+
 	return (
-		<div>
-			hello world
-		</div>
+		<>
+			{renderRow()}
+			{renderRow()}
+			{renderRow()}
+		</>
 	);
 };
 

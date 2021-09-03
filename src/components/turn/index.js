@@ -8,9 +8,9 @@ const Turn = ({ children }) => {
 	return (
 		<div>
 			{ xTurn ? (
-				<div>Next player: X</div>
+				<div className='mb-2'>Next player: X</div>
 			) : (
-				<div>Next player: Y</div>
+				<div className='mb-2'>Next player: Y</div>
 			)}
 			{children}
 		</div>
