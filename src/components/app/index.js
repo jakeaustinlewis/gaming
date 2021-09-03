@@ -4,12 +4,15 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
 	const [xTurn, setXTurn] = useState(true);
+	const [cols, setCols] = useState(Array(3).fill(null));
 
 	return (
 		<AppContext.Provider
 			value={{
 				xTurn,
 				setXTurn,
+				cols,
+				setCols,
 			}}
 		>
 			{children}

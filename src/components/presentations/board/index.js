@@ -1,24 +1,29 @@
 import React from 'react';
 import Square from '../../square';
+import useAppContext from '../../app';
 
-const board = () => {
-	const renderRow = () => {
-		return (
-			<div>
-				<Square />
-				<Square />
-				<Square />
-			</div>
-		);
-	};
+const Row = () => {
+	const { cols } = useAppContext();
+
+	return (
+		<div>
+			{cols.map((square) => {
+				return <Square />;
+			})}
+		</div>
+	);
+};
+
+const Board = () => {
+	const { cols } = useAppContext();
 
 	return (
 		<>
-			{renderRow()}
-			{renderRow()}
-			{renderRow()}
+			{cols.map((row) => {
+				return <Row />;
+			})}
 		</>
 	);
 };
 
-export default board;
+export default Board;
