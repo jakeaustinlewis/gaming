@@ -2,13 +2,13 @@ import React from 'react';
 import Square from '../../square';
 import useAppContext from '../../app';
 
-const Row = () => {
+const Row = ({ rowPosition }) => {
 	const { cols } = useAppContext();
 
 	return (
-		<div>
-			{cols.map((square) => {
-				return <Square />;
+		<div className='d-flex'>
+			{cols.map((square, index) => {
+				return <Square position={[rowPosition, index]} key={index} />;
 			})}
 		</div>
 	);
@@ -18,11 +18,11 @@ const Board = () => {
 	const { cols } = useAppContext();
 
 	return (
-		<>
-			{cols.map((row) => {
-				return <Row />;
+		<div>
+			{cols.map((row, index) => {
+				return <Row rowPosition={index} key={index} />;
 			})}
-		</>
+		</div>
 	);
 };
 

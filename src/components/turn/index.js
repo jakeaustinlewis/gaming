@@ -10,7 +10,7 @@ const Turn = ({ children }) => {
 			{ xTurn ? (
 				<div className='mb-2'>Next player: X</div>
 			) : (
-				<div className='mb-2'>Next player: Y</div>
+				<div className='mb-2'>Next player: O</div>
 			)}
 			{children}
 		</div>

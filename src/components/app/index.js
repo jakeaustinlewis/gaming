@@ -1,10 +1,12 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
 	const [xTurn, setXTurn] = useState(true);
-	const [cols, setCols] = useState(Array(3).fill(null));
+	const [cols, setCols] = useState(Array(3).fill(Array(3).fill('')));
+
+	console.log('xTurn: ', xTurn);
 
 	return (
 		<AppContext.Provider

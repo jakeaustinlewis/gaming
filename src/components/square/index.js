@@ -1,13 +1,36 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect } from 'react';
+import useAppContext from '../app';
 
-const Square = ({ value }) => {
+const Square = ({ value, position }) => {
+	const {
+		cols, setCols, xTurn, setXTurn,
+	} = useAppContext();
+	const [row, col] = position;
+
+	const handleTurn = () => {
+		const newRow = [...cols[row]];
+		const turn = xTurn ? 'X' : 'O';
+		newRow.splice(col, 1, turn);
+		cols[row] = newRow;
+		setCols([...cols]);
+		setXTurn(!xTurn);
+
+		// const [...newCol] = [...[...cols]];
+		// newCol[row][col] = xTurn ? 'X' : 'O';
+		// setCols(cols);
+		// setXTurn(!xTurn);
+	};
+
 	return (
 		<button
 			className='square'
 			type='button'
+			onClick={handleTurn}
 		>
-			{value}
+			{/* {row}
+			{col} */}
+			{cols[row][col]}
 		</button>
 	);
 };
