@@ -11,6 +11,8 @@ const Square = ({ value, position }) => {
 	const handleTurn = () => {
 		const newRow = [...cols[row]];
 		const turn = xTurn ? 'X' : 'O';
+
+		if (newRow[col]) return;
 		newRow.splice(col, 1, turn);
 		cols[row] = newRow;
 		setCols([...cols]);
