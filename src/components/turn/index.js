@@ -10,6 +10,7 @@ const Turn = ({ children, winner }) => {
 			{ winner ? (
 				<div className='mb-2'>
 					Winner is:
+					{' '}
 					{winner}
 				</div>
 			) : (

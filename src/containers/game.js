@@ -5,7 +5,7 @@ import useAppContext from '../components/app';
 
 const GameContainer = () => {
 	const {
-		cols, setCols, xTurn, setXTurn,
+		matrix, setMatrix, xTurn, setXTurn,
 	} = useAppContext();
 
 	const waysToWin = [
@@ -27,6 +27,12 @@ const GameContainer = () => {
 		[
 			[0, 2], [1, 2], [2, 2],
 		],
+		[
+			[0, 0], [1, 1], [2, 2],
+		],
+		[
+			[2, 0], [1, 1], [0, 2],
+		],
 	];
 
 	const isWon = () => {
@@ -40,14 +46,14 @@ const GameContainer = () => {
 				const [fistRow, firstCol] = waysToWin[i][0];
 
 				// places on board need to have a value
-				if (!cols[row][col] || !cols[fistRow][firstCol]) return false;
+				if (!matrix[row][col] || !matrix[fistRow][firstCol]) return false;
 
 				// check if values are the same
-				return cols[row][col] === cols[fistRow][firstCol];
+				return matrix[row][col] === matrix[fistRow][firstCol];
 			});
 			if (allEqual) {
 				const [firstRow, firstCol] = waysToWin[i][0];
-				const winner = cols[firstRow][firstCol];
+				const winner = matrix[firstRow][firstCol];
 				return winner;
 			}
 		}
@@ -58,7 +64,7 @@ const GameContainer = () => {
 
 		// 	for (let j = 0; j < waysToWin[i].length; j++) {
 		// 		if (j > 0) {
-		// 			if (cols[move1] !== cols[waysToWin[i][j]]) break;
+		// 			if (matrix[move1] !== matrix[waysToWin[i][j]]) break;
 		// 		}
 		// 	}
 

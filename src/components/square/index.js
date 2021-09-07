@@ -4,23 +4,23 @@ import useAppContext from '../app';
 
 const Square = ({ value, position }) => {
 	const {
-		cols, setCols, xTurn, setXTurn,
+		matrix, setMatrix, xTurn, setXTurn,
 	} = useAppContext();
 	const [row, col] = position;
 
 	const handleTurn = () => {
-		const newRow = [...cols[row]];
+		const newRow = [...matrix[row]];
 		const turn = xTurn ? 'X' : 'O';
 
 		if (newRow[col]) return;
 		newRow.splice(col, 1, turn);
-		cols[row] = newRow;
-		setCols([...cols]);
+		matrix[row] = newRow;
+		setMatrix([...matrix]);
 		setXTurn(!xTurn);
 
-		// const [...newCol] = [...[...cols]];
-		// newCol[row][col] = xTurn ? 'X' : 'O';
-		// setCols(cols);
+		// const newMatrix = [...matrix];
+		// newMatrix[row][col] = xTurn ? 'X' : 'O';
+		// setMatrix(newMatrix);
 		// setXTurn(!xTurn);
 	};
 
@@ -32,7 +32,7 @@ const Square = ({ value, position }) => {
 		>
 			{/* {row}
 			{col} */}
-			{cols[row][col]}
+			{matrix[row][col]}
 		</button>
 	);
 };
