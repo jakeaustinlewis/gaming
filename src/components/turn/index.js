@@ -2,16 +2,16 @@
 import React from 'react';
 import useAppContext from '../app';
 
-const Turn = ({ children, winner }) => {
-	const { xTurn } = useAppContext();
+const Turn = ({ children }) => {
+	const { xTurn, hasWon } = useAppContext();
 
 	return (
 		<div>
-			{ winner ? (
+			{ hasWon ? (
 				<div className='mb-2'>
 					Winner is:
 					{' '}
-					{winner}
+					{hasWon}
 				</div>
 			) : (
 				<div>
@@ -29,3 +29,11 @@ const Turn = ({ children, winner }) => {
 };
 
 export default Turn;
+// Mathrew will be an advicate
+// within 24-48 hours
+
+// Use context
+// what is scope
+
+// memasation
+// atomic design methology

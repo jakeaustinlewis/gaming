@@ -4,6 +4,7 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
 	const [xTurn, setXTurn] = useState(true);
+	const [hasWon, setHasWon] = useState(null);
 	const [matrix, setMatrix] = useState(Array(3).fill(Array(3).fill('')));
 
 	return (
@@ -13,6 +14,8 @@ export const AppProvider = ({ children }) => {
 				setXTurn,
 				matrix,
 				setMatrix,
+				hasWon,
+				setHasWon,
 			}}
 		>
 			{children}
