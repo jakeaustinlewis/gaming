@@ -4,8 +4,12 @@ import useAppContext from '../app';
 
 const Square = ({ value, position }) => {
 	const {
-		matrix, setMatrix, xTurn, setXTurn,
+		xTurn, setXTurn, history, setHistory, hasWon, setStep, step,
 	} = useAppContext();
+
+	const current = history[step];
+	const { matrix } = current;
+
 	const [row, col] = position;
 
 	const handleTurn = () => {
@@ -13,10 +17,17 @@ const Square = ({ value, position }) => {
 		const turn = xTurn ? 'X' : 'O';
 
 		if (newRow[col]) return;
+		if (hasWon) return;
+
 		newRow.splice(col, 1, turn);
 		matrix[row] = newRow;
-		setMatrix([...matrix]);
-		setXTurn(!xTurn);
+
+		setHistory((prevHistory) => {
+			prevHistory.length = step + 1;
+			return prevHistory.concat({ matrix });
+		});
+		setXTurn((step % 2) !== 0);
+		setStep((prevStep) => { return prevStep + 1; });
 
 		// const newMatrix = [...matrix];
 		// newMatrix[row][col] = xTurn ? 'X' : 'O';

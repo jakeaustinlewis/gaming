@@ -3,7 +3,9 @@ import Square from '../../square';
 import useAppContext from '../../app';
 
 const Row = ({ rowPosition }) => {
-	const { matrix } = useAppContext();
+	const { history, step } = useAppContext();
+	const current = history[step];
+	const { matrix } = current;
 
 	return (
 		<div className='d-flex'>
@@ -15,13 +17,19 @@ const Row = ({ rowPosition }) => {
 };
 
 const Board = () => {
-	const { matrix } = useAppContext();
+	const { history, step } = useAppContext();
+	const current = history[step];
+	const { matrix } = current;
 
 	return (
 		<div>
-			{matrix.map((row, index) => {
-				return <Row rowPosition={index} key={index} />;
-			})}
+			<div>
+				{matrix.map((row, index) => {
+					return <Row rowPosition={index} key={index} />;
+				})}
+			</div>
+			{/* <History /> */}
+			{/* <Restart /> */}
 		</div>
 	);
 };
