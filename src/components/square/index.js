@@ -23,8 +23,11 @@ const Square = ({ value, position }) => {
 		matrix[row] = newRow;
 
 		setHistory((prevHistory) => {
-			prevHistory.length = step + 1;
-			return prevHistory.concat({ matrix });
+			// prevHistory.length = step + 1;
+			console.log('matrix: ', [{ matrix }]);
+			console.log('prevHistory: ', prevHistory);
+			// return prevHistory.concat([{ matrix }]);
+			return prevHistory.concat(prevHistory);
 		});
 		setXTurn((step % 2) !== 0);
 		setStep((prevStep) => { return prevStep + 1; });

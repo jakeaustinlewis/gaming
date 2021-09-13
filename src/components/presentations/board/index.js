@@ -1,6 +1,7 @@
 import React from 'react';
 import Square from '../../square';
 import useAppContext from '../../app';
+import History from '../../history';
 
 const Row = ({ rowPosition }) => {
 	const { history, step } = useAppContext();
@@ -20,6 +21,7 @@ const Board = () => {
 	const { history, step } = useAppContext();
 	const current = history[step];
 	const { matrix } = current;
+	console.log('history: ', history);
 
 	return (
 		<div>
@@ -28,7 +30,7 @@ const Board = () => {
 					return <Row rowPosition={index} key={index} />;
 				})}
 			</div>
-			{/* <History /> */}
+			<History />
 			{/* <Restart /> */}
 		</div>
 	);
