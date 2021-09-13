@@ -4,8 +4,6 @@ import useAppContext from '../app';
 
 const History = () => {
 	const { history, step, setStep } = useAppContext();
-	const current = history[step];
-	const { matrix } = current;
 
 	const handleBackInTime = () => {
 		if (!step) return;
@@ -15,7 +13,7 @@ const History = () => {
 	};
 
 	const handleForwardInTime = () => {
-		if (history.length === step) return;
+		if (history.length === (step + 1)) return;
 		setStep((prevStep) => {
 			return prevStep + 1;
 		});

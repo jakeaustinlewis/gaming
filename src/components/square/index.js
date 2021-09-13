@@ -14,20 +14,18 @@ const Square = ({ value, position }) => {
 
 	const handleTurn = () => {
 		const newRow = [...matrix[row]];
+		const newMatrix = [...matrix];
 		const turn = xTurn ? 'X' : 'O';
 
 		if (newRow[col]) return;
 		if (hasWon) return;
 
 		newRow.splice(col, 1, turn);
-		matrix[row] = newRow;
+		newMatrix[row] = newRow;
 
 		setHistory((prevHistory) => {
-			// prevHistory.length = step + 1;
-			console.log('matrix: ', [{ matrix }]);
-			console.log('prevHistory: ', prevHistory);
-			// return prevHistory.concat([{ matrix }]);
-			return prevHistory.concat(prevHistory);
+			prevHistory.length = step + 1;
+			return prevHistory.concat([{ matrix: [...newMatrix] }]);
 		});
 		setXTurn((step % 2) !== 0);
 		setStep((prevStep) => { return prevStep + 1; });
