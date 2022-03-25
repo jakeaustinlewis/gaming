@@ -26,7 +26,6 @@ module.exports = {
 		'no-underscore-dangle': 0,
 		'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
 		allowForLoopAfterthoughts: 0,
-		'arrow-body-style': ['error', 'always'],
 		'react/jsx-uses-react': 'error',
 		'react/jsx-uses-vars': 'error',
 		'react/prop-types': [1],

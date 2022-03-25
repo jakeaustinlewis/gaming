@@ -1,5 +1,5 @@
 import React, {
-	createContext, useState, useContext, useEffect,
+	createContext, useState, useContext,
 } from 'react';
 
 const AppContext = createContext();
@@ -7,7 +7,6 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
 	const [xTurn, setXTurn] = useState(true);
 	const [hasWon, setHasWon] = useState(null);
-	// const [matrix, setMatrix] = useState(Array(3).fill(Array(3).fill('')));
 	const [history, setHistory] = useState([{ matrix: Array(3).fill(Array(3).fill('')) }]);
 	const [step, setStep] = useState(0);
 
@@ -18,8 +17,6 @@ export const AppProvider = ({ children }) => {
 				setXTurn,
 				history,
 				setHistory,
-				// matrix,
-				// setMatrix,
 				hasWon,
 				setHasWon,
 				step,
@@ -31,8 +28,6 @@ export const AppProvider = ({ children }) => {
 	);
 };
 
-const useAppContext = () => {
-	return useContext(AppContext);
-};
+const useAppContext = () => useContext(AppContext);
 
 export default useAppContext;

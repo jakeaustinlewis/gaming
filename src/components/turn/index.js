@@ -2,7 +2,7 @@
 import React from 'react';
 import useAppContext from '../app';
 
-const Turn = ({ children }) => {
+const Turn = () => {
 	const { xTurn, hasWon } = useAppContext();
 
 	return (
@@ -22,18 +22,8 @@ const Turn = ({ children }) => {
 					)}
 				</div>
 			)}
-
-			{children}
 		</div>
 	);
 };
 
 export default Turn;
-// Mathrew will be an advicate
-// within 24-48 hours
-
-// Use context
-// what is scope
-
-// memasation
-// atomic design methology

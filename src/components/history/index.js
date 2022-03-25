@@ -1,22 +1,24 @@
-import React from 'react';
-import Square from '../square';
+import React, { useEffect } from 'react';
 import useAppContext from '../app';
 
 const History = () => {
-	const { history, step, setStep } = useAppContext();
+	const {
+		history, step, setStep, setXTurn, setHasWon,
+	} = useAppContext();
+
+	useEffect(() => {
+		setXTurn((step % 2) === 0);
+	}, [step]);
 
 	const handleBackInTime = () => {
 		if (!step) return;
-		setStep((prevStep) => {
-			return prevStep - 1;
-		});
+		setStep((prevStep) => prevStep - 1);
+		setHasWon(null);
 	};
 
 	const handleForwardInTime = () => {
-		if (history.length === (step + 1)) return;
-		setStep((prevStep) => {
-			return prevStep + 1;
-		});
+		if (history.length - 1 === step) return;
+		setStep((prevStep) => prevStep + 1);
 	};
 
 	return (
@@ -25,13 +27,13 @@ const History = () => {
 				type='button'
 				onClick={handleBackInTime}
 			>
-				&larr
+				&#8592;
 			</button>
 			<button
 				type='button'
 				onClick={handleForwardInTime}
 			>
-				&rarr
+				&#8594;
 			</button>
 		</div>
 	);
