@@ -13,27 +13,27 @@ const GameContainer = () => {
 		[
 			[0, 0], [0, 1], [0, 2],
 		],
-		[
-			[1, 0], [1, 1], [1, 2],
-		],
-		[
-			[2, 0], [2, 1], [2, 2],
-		],
-		[
-			[0, 0], [1, 0], [2, 0],
-		],
-		[
-			[0, 1], [1, 1], [2, 1],
-		],
-		[
-			[0, 2], [1, 2], [2, 2],
-		],
-		[
-			[0, 0], [1, 1], [2, 2],
-		],
-		[
-			[2, 0], [1, 1], [0, 2],
-		],
+		// [
+		// 	[1, 0], [1, 1], [1, 2],
+		// ],
+		// [
+		// 	[2, 0], [2, 1], [2, 2],
+		// ],
+		// [
+		// 	[0, 0], [1, 0], [2, 0],
+		// ],
+		// [
+		// 	[0, 1], [1, 1], [2, 1],
+		// ],
+		// [
+		// 	[0, 2], [1, 2], [2, 2],
+		// ],
+		// [
+		// 	[0, 0], [1, 1], [2, 2],
+		// ],
+		// [
+		// 	[2, 0], [1, 1], [0, 2],
+		// ],
 	];
 
 	const waysToWin2 = (() => {
@@ -60,13 +60,15 @@ const GameContainer = () => {
 
 	useEffect(() => {
 		// Check latest matrix against ways-to-win to see if the game is over
-		for (let i = 0; i < waysToWin2.length; i++) {
+		for (let i = 0; i < waysToWin.length; i++) {
 			const allEqual = waysToWin2[i].every((move) => {
 				const [row, col] = move;
 				const [fistRow, firstCol] = waysToWin2[i][0];
 
 				// places on board need to have a value
-				// check if values are the same
+				// check if values (X or O) are the same in locations needed to win.
+				// We only need to check the first value (X or O) in the ways-to-win locations against
+				// the values played by the players in all the winnable locations
 				return !!matrix[row][col] && matrix[row][col] === matrix[fistRow][firstCol];
 			});
 			if (allEqual) {
@@ -84,6 +86,7 @@ const GameContainer = () => {
 			}
 		}
 		if (draw) return setHasWon('draw');
+		return true;
 	}, [history]);
 
 	return (
